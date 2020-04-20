@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-import getopt, sys
+import getopt, sys, other
 import translate as tr
 
 
@@ -28,7 +28,6 @@ for arg, value in args:
 if len(opts) < 2 and not gen_aud_file or len(opts) == 0:
     sys.exit('Too few positional arguments.')
 
-trs = tr.gen_text(lang_in, lang_out, opts[0])
-
-for tr in trs:
-    print(tr.text)
+trans = tr.gen_text(lang_in, lang_out, opts[1])
+frmt = other.gen_format(opts[0])
+tr.gen_audio_file(trans, frmt, lang_in, lang_out)

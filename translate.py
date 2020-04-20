@@ -16,8 +16,8 @@ def gen_text(langin, langout, filein):
     return trs
 
 
-def gen_audio_file(trs):
-    fileout = filein + '.out.mp3'
+#Takes a google Translated object as input
+def gen_audio_file(trs, pattern, langin, langout):
     temp = '/dev/shm'
     # settle tmp
     temp += '/mvoad-' + str(time.time())
@@ -49,6 +49,3 @@ def gen_audio_file(trs):
                 cbn.build([tmpdest, tmpfn], tmpold, 'concatenate')
             else:
                 t.build(filename, tmpold)
-
-    dest = fileout
-    os.system('mv ' + tmpold + ' ' +  dest)
