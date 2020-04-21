@@ -3,9 +3,10 @@ from google_speech import Speech
 import os, sys, shutil, logging, sox, time, getopt, other
 
 def gen_text(langin, langout, filein):
+
     # get input lines
-    if filein:
-            lines = list(filter(other.empty_and_comments, open(filein, 'r').readlines()));
+    lines = []
+    lines = list(filter(other.empty_and_comments, open(filein, 'r').readlines()));
 
 
 

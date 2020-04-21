@@ -1,18 +1,11 @@
 #!/usr/bin/env python3
-
-
 import getopt, sys, other
 import translate as tr
-
-
-
-args, opts = getopt.getopt(sys.argv[1:], 'ti:d:')
-
-
 gen_aud_file = True
 lang_in = 'nl'
 lang_out = 'en'
 
+args, opts = getopt.getopt(sys.argv[1:], 'ti:d:')
 for arg, value in args:
     if arg == '-i':
         if value == '':

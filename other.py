@@ -1,6 +1,3 @@
-def empty_and_comments(x):
-	return x and not x.lstrip().startswith('#')
-
 def gen_format (formatstring):
     newret = []
     formats = formatstring.split('/')
