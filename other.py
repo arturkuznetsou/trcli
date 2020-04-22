@@ -1,3 +1,4 @@
+import sys
 def gen_format (formatstring):
     newret = []
     formats = formatstring.split('/')

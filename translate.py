@@ -1,28 +1,31 @@
 from googletrans import Translator
 from google_speech import Speech
-import os, sys, shutil, logging, sox, time, getopt, other
+import os, sys, shutil, logging, sox, time, getopt, other, re
 
-def gen_text(langin, langout, filein):
-
+def gen_text(filein, langin, langout):
     # get input lines
-    lines = []
-    lines = list(filter(other.empty_and_comments, open(filein, 'r').readlines()));
-
-
-
-
+    fl = open(filein, 'r').read()
+    fl = re.sub('[\n\t ]+', '\n', fl)
+    fl = fl.split('\n')
+    del fl[-1]
     # translate lines
     t = Translator()
-    trs = list(map(lambda x: t.translate(x[0:len(x)-1], src=langin, dest=langout), lines))
-    return trs
+
+    tr = []
+    for line in fl:
+        tr.append(t.translate(line, langin, langout))
+
+    return tr
 
 
 #Takes a google Translated object as input
-def gen_audio_file(trs, pattern, langin, langout):
-    temp = '/dev/shm'
+def gen_audio_file(trs, langin, langout, pattern, fileout):
+
+    temp = '/tmp'
     # settle tmp
     temp += '/mvoad-' + str(time.time())
     os.mkdir(temp)
+
     tmpfn = temp + '/mvoad.tmp.wav'
     tmpold = temp + '/mvoad.tmp.dest1.mp3'
     tmpdest = temp + '/mvoad.tmp.dest.mp3'
@@ -50,3 +53,5 @@ def gen_audio_file(trs, pattern, langin, langout):
                 cbn.build([tmpdest, tmpfn], tmpold, 'concatenate')
             else:
                 t.build(filename, tmpold)
+    shutil.move(tmpold, fileout)
+    shutil.rmtree(temp)
