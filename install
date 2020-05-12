@@ -1,0 +1,26 @@
+#!/bin/sh
+
+PY_FILES="__main__.py  other.py  translate.py"
+PY_DEPS="sox googletrans google_speech"
+NAME="trscli"
+
+checkdep()
+{
+	python -c "import $1" && return 1
+	echo "Error: Dependency '$1' is not present. Try pip installing it."
+	exit
+}
+
+echo "Checking dependencies"
+for file in $PY_DEPS; do
+	checkdep $file
+done
+
+
+
+echo "Creating binary"
+zip $NAME $PY_FILES || echo "Zipping files failed" && exit
+echo '#!/usr/bin/env python3' > $NAME
+cat $(echo $NAME".zip") >> $NAME
+rm $NAME".zip"
+chmod +xr $NAME

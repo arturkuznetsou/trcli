@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import getopt, sys, other
 import translate as tr
 gen_aud_file = True
