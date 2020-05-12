@@ -1,8 +1,8 @@
-#A CLI for translating and generating audio files</br>
+## A CLI for translating and generating audio files</br>
 </br>
 </br>
 trscli \<format\> \<input language\>-\<output language\> \<file\></br>
-#How to use it:</br>
+## How to use it:</br>
 	trscli uses a three options.</br>
 	* A format</br>
 	* A language option</br>
