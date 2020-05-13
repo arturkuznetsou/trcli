@@ -3,11 +3,23 @@
 PY_FILES="__main__.py  other.py  translate.py"
 PY_DEPS="sox googletrans google_speech"
 NAME="trscli"
+INSTALL_DIR="/usr/local/bin/"
 
+
+clean()
+{
+	echo "Cleaning"
+	rm $NAME".zip"
+}
+install()
+{
+	echo "Installing."
+	mv $NAME $INSTALL_DIR || echo "Installation failed. Try running as root."
+}
 checkdep()
 {
 	python -c "import $1" && return 1
-	echo "Error: Dependency '$1' is not present. Try pip installing it."
+	echo "Error: Dependency '$1' is not present. Try pip installing it. (pip intall $1)"
 	exit
 }
 
@@ -19,8 +31,21 @@ done
 
 
 echo "Creating binary"
-zip $NAME $PY_FILES || echo "Zipping files failed" && exit
+zip $NAME $PY_FILES  >> /dev/null || $(echo "Zipping files failed" & exit)
 echo '#!/usr/bin/env python3' > $NAME
-cat $(echo $NAME".zip") >> $NAME
-rm $NAME".zip"
+cat $NAME".zip" >> $NAME
 chmod +xr $NAME
+
+
+
+
+while getopts "ci" o; do
+	case "${o}" in
+		c)
+			clean
+			;;
+		i)
+			install
+			;;
+	esac
+done
