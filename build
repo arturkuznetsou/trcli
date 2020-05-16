@@ -29,13 +29,11 @@ for file in $PY_DEPS; do
 done
 
 
-
 echo "Creating binary"
-zip $NAME $PY_FILES  >> /dev/null || $(echo "Zipping files failed" & exit)
+zip $NAME $PY_FILES || exit
 echo '#!/usr/bin/env python3' > $NAME
 cat $NAME".zip" >> $NAME
 chmod +xr $NAME
-
 
 
 
