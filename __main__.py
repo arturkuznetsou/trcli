@@ -15,13 +15,6 @@ fileout = filein + '.out.mp3'
 langin = args[-2].split('-')[0]
 langout = args[-2].split('-')[1]
 
-for arg, value in opts:
-    if arg == '-t':
-        gen_aud_file = False
-    elif arg == '-o':
-        fileout = value
-
-
 
 
 pattern = other.gen_format(args[-3])
