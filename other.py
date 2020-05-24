@@ -14,9 +14,9 @@ def gen_format (formatstring):
                 newformt.append(True)
             else:
                 newformt.append(False)
-                newformt.append(1/float(tpm[1]))
-                newformt.append(float(tpm[2]))
-                newret.append(newformt)
+            newformt.append(1/float(tpm[1]))
+            newformt.append(float(tpm[2]))
+            newret.append(newformt)
         except:
             print('Format specified incorrectly. Using default format.')
             return defaultformat

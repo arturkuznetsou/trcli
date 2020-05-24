@@ -15,15 +15,14 @@ fileout = filein + '.out.mp3'
 langin = args[-2].split('-')[0]
 langout = args[-2].split('-')[1]
 
+#for arg, value in opts:
+    #elif arg == '-o':
+        #fileout = value
+
+
 
 
 pattern = other.gen_format(args[-3])
-try:
-    trans = tr.gen_text(args[-1], langin, langout)
-except Exception as error:
-    sys.exit(error)
+trans = tr.gen_text(args[-1], langin, langout)
 
-try:
-    tr.gen_audio_file(trans, langin, langout, pattern, fileout)
-except Exception as error:
-    sys.exit(error)
+tr.gen_audio_file(trans, langin, langout, pattern, fileout)
