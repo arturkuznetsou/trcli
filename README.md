@@ -4,25 +4,17 @@ Build instrcutions:</br>
 Building the binary: `<./build>`
 </br>
 Building and installing the binary:
-```
 ./build -i
-```
 </br>
 Building the binary and cleaning afterwards:
-```
 ./build -c
-```
 </br>
 Building and installing the binary and cleaning afterwards:
-```
 ./build -ic
-```
 </br>
 </br>
 </br>
-```
 trscli (format) (input language)-(output language) (file)</br>
-```
 </br>
 How to use it:</br>
 trscli uses a three options.</br>
