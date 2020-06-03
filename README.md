@@ -1,10 +1,7 @@
 # A CLI for translating and generating audio files</br>
 </br>
 Build instrcutions:</br>
-Building the binary:
-```
-./build
-```
+Building the binary: `<./build>`
 </br>
 Building and installing the binary:
 ```
