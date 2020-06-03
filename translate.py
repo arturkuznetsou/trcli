@@ -5,7 +5,7 @@ import os, sys, shutil, logging, sox, time, getopt, other, re
 def gen_text(filein, langin, langout):
     # get input lines
     fl = open(filein, 'r').read()
-    fl = re.sub('[\n\t ]+', '\n', fl)
+    fl = re.sub('\n+', '\n', fl)
     fl = fl.split('\n')
     del fl[-1]
     # translate lines
